@@ -1,8 +1,11 @@
 'use client'
 
-import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
+import { Button } from "@/components/ui/button"
+import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar"
+import UseProject from "@/hooks/use-project"
 import { cn } from "@/lib/utils"
-import { Bot, CreditCard, LayoutDashboardIcon, Presentation } from "lucide-react"
+import { Bot, CreditCard, LayoutDashboardIcon, Plus, Presentation } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -31,23 +34,26 @@ const items = [
 ]
 
 
-const projects = [{
-    name: 'Project 1',
-    url: '/project/1'
-}, {
-    name: 'Project 2',
-    url: '/project/2'
-}, {
-    name: 'Project 3',
-    url: '/project/3'
-}]
+
 
 export function AppSidebar() {
+
     const pathname = usePathname()
+    const { open } = useSidebar()
+    const { projects, selectedProject, setSelectedProject } = UseProject()
+
     return (
         <Sidebar collapsible="icon" variant="floating">
             <SidebarHeader>
-                LOGO
+                <div className="flex items-center gap-2">
+                    <Image src='/devsync-logo.png' alt='logo' width={40} height={40} />
+                    {open &&
+                        <h1 className="text-xl font-bold text-primary">
+                            DevSync-AI
+                        </h1>
+                    }
+
+                </div>
             </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup>
@@ -87,23 +93,37 @@ export function AppSidebar() {
 
 
                             {
-                                projects.map(project => {
+                                projects?.map(project => {
                                     return (
                                         <SidebarMenuItem key={project.name}>
                                             <SidebarMenuButton asChild>
-                                                <div>
-                                                    <div className={cn('rounded-sm border size-6 item-center justify-center text-sm text-primary bg-white', {
-                                                        'bg-primary text-white': true
+
+                                                <div onClick={() => setSelectedProject(project.id)}>
+                                                    <div className={cn('rounded-sm border size-6 flex items-center justify-center text-sm text-primary bg-white', {
+                                                        'bg-primary text-white': project.id === selectedProject
                                                     })}>
                                                         {project.name[0]}
 
+
                                                     </div>
+                                                    <span>{project.name}</span>
                                                 </div>
                                             </SidebarMenuButton>
                                         </SidebarMenuItem>
                                     )
                                 })
                             }
+                            <div className="h-2"></div>
+                            {open && <SidebarMenuItem>
+                                <Link href='/create'>
+                                    <Button variant={'outline'} className="w-fit">
+                                        <Plus />
+                                        Create Project
+                                    </Button>
+                                </Link>
+
+                            </SidebarMenuItem>}
+
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
