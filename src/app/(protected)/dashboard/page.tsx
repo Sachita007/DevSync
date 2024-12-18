@@ -10,6 +10,7 @@ const Dashboard = () => {
     const { project } = UseProject()
     return (
         <div>
+            {project?.id}
             <div className='flex items-center  justify-between  flex-wrap gap-y-4'>
                 {/* github link */}
                 <div className='w-fit rounded-md bg-primary px-4 py-3 flex'>
@@ -43,8 +44,14 @@ const Dashboard = () => {
 
             <div className='mt-4'>
                 <div className='gird grid-cols-1 gap-4  dm:grid-cols-5'>
-
+                    AskQuestionCard
+                    MeetingCard
                 </div>
+            </div>
+
+            <div className='mt-8'>
+                Commit Log
+
             </div>
         </div>
     )

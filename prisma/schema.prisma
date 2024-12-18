@@ -30,6 +30,7 @@ model Project {
     githubUrl     String
     deletedAt     DateTime?
     UserToProject UserToProject[]
+    Commit        Commit[]
 }
 
 model UserToProject {
@@ -43,4 +44,20 @@ model UserToProject {
     Project   Project   @relation(fields: [projectId], references: [id])
 
     @@unique([userId, projectId])
+}
+
+model Commit {
+    id                 String    @id @default(cuid())
+    projectId          String
+    commitHash         String
+    commitMessage      String
+    commitAuthorName   String
+    commitAuthorAvatar String
+    commitDate         DateTime
+    // AI Summery
+    summary            String
+    createdAt          DateTime  @default(now())
+    updatedAt          DateTime  @updatedAt
+    deletedAt          DateTime?
+    Project            Project   @relation(fields: [projectId], references: [id])
 }
