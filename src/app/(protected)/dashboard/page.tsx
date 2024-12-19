@@ -4,6 +4,7 @@ import { useUser } from '@clerk/nextjs'
 import { ExternalLink, Github } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
+import CommitLog from './commit-log'
 
 const Dashboard = () => {
     const { user } = useUser()
@@ -50,7 +51,7 @@ const Dashboard = () => {
             </div>
 
             <div className='mt-8'>
-                Commit Log
+                <CommitLog />
 
             </div>
         </div>
