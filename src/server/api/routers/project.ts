@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { pollCommits } from "@/lib/github";
+import { indexGithubRepo } from "@/lib/github-loader";
 
 export const projectRouter = createTRPCRouter({
     createProject: protectedProcedure
@@ -23,6 +24,8 @@ export const projectRouter = createTRPCRouter({
                     }
                 }
             })
+            console.log("summarising commit", process.env.GEMINI_API_KEY)
+            await indexGithubRepo(project.id, input.githubUrl, input.githubToken)
             await pollCommits(project.id)
             return project
         }),

@@ -105,4 +105,3 @@ async function filterUnprocessedCommits(projectId: string, commitHashes: Respons
     return unprocessedCommits
 }
 
-pollCommits('cm7wivhx90000oukr0ylqzvdf')
