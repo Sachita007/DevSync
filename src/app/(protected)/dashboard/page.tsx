@@ -5,6 +5,7 @@ import { ExternalLink, Github } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import CommitLog from './commit-log'
+import AskQuestionCard from './ask-question-card'
 
 const Dashboard = () => {
     const { user } = useUser()
@@ -44,9 +45,10 @@ const Dashboard = () => {
             </div>
 
             <div className='mt-4'>
-                <div className='gird grid-cols-1 gap-4  dm:grid-cols-5'>
-                    AskQuestionCard
-                    MeetingCard
+                <div className='grid grid-cols-1 gap-4 sm:grid-cols-5'>
+                    <AskQuestionCard />
+                    <div>MeetingCard</div>
+
                 </div>
             </div>
 
