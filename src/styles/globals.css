@@ -83,3 +83,142 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+.markdown-wrapper {
+  /* Ensure the markdown wrapper inherits colors */
+  color: inherit;
+  background-color: inherit;
+}
+
+/* Target the markdown content directly */
+.markdown-wrapper .wmde-markdown {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+/* Override all text elements inside the markdown */
+.markdown-wrapper .wmde-markdown p,
+.markdown-wrapper .wmde-markdown h1,
+.markdown-wrapper .wmde-markdown h2,
+.markdown-wrapper .wmde-markdown h3,
+.markdown-wrapper .wmde-markdown h4,
+.markdown-wrapper .wmde-markdown h5,
+.markdown-wrapper .wmde-markdown h6,
+.markdown-wrapper .wmde-markdown ul,
+.markdown-wrapper .wmde-markdown ol,
+.markdown-wrapper .wmde-markdown li,
+.markdown-wrapper .wmde-markdown blockquote,
+.markdown-wrapper .wmde-markdown pre {
+  color: inherit !important;
+}
+
+/* Special styling for code blocks */
+.markdown-wrapper .wmde-markdown pre {
+  background-color: #1e1e1e !important; /* Keep dark background */
+}
+
+/* Make code text light-colored for readability on dark background */
+.markdown-wrapper .wmde-markdown pre code {
+  color: #e6e6e6 !important; /* Light gray text for code blocks */
+}
+
+/* Inline code styling - fixed for better visibility */
+.markdown-wrapper .wmde-markdown code:not(pre code),
+.markdown-wrapper .wmde-markdown p code,
+.markdown-wrapper .wmde-markdown li code,
+.markdown-wrapper .wmde-markdown table code {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  color: #0550ae !important; /* Dark blue for inline code */
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+/* Dark mode specific styles - if your app has dark mode */
+.dark .markdown-wrapper .wmde-markdown code:not(pre code),
+.dark .markdown-wrapper .wmde-markdown p code,
+.dark .markdown-wrapper .wmde-markdown li code,
+.dark .markdown-wrapper .wmde-markdown table code {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #7eb6ff !important; /* Light blue for dark mode inline code */
+}
+
+/* Fix for backtick ``` inline code sections */
+.markdown-wrapper .wmde-markdown p .token.punctuation.token.punctuation.token.punctuation {
+  color: #0550ae !important; /* Match the inline code color */
+}
+
+.dark .markdown-wrapper .wmde-markdown p .token.punctuation.token.punctuation.token.punctuation {
+  color: #7eb6ff !important; /* Match the dark mode inline code color */
+}
+
+/* Syntax highlighting colors for code blocks */
+.markdown-wrapper .wmde-markdown pre .token.comment,
+.markdown-wrapper .wmde-markdown pre .token.prolog,
+.markdown-wrapper .wmde-markdown pre .token.doctype,
+.markdown-wrapper .wmde-markdown pre .token.cdata {
+  color: #6a9955 !important; /* Green comments */
+}
+
+.markdown-wrapper .wmde-markdown pre .token.punctuation {
+  color: #d4d4d4 !important;
+}
+
+.markdown-wrapper .wmde-markdown pre .token.property,
+.markdown-wrapper .wmde-markdown pre .token.tag,
+.markdown-wrapper .wmde-markdown pre .token.boolean,
+.markdown-wrapper .wmde-markdown pre .token.number,
+.markdown-wrapper .wmde-markdown pre .token.constant,
+.markdown-wrapper .wmde-markdown pre .token.symbol {
+  color: #b5cea8 !important; /* Light green for numbers */
+}
+
+.markdown-wrapper .wmde-markdown pre .token.selector,
+.markdown-wrapper .wmde-markdown pre .token.attr-name,
+.markdown-wrapper .wmde-markdown pre .token.string,
+.markdown-wrapper .wmde-markdown pre .token.char,
+.markdown-wrapper .wmde-markdown pre .token.builtin {
+  color: #ce9178 !important; /* Orange for strings */
+}
+
+.markdown-wrapper .wmde-markdown pre .token.operator,
+.markdown-wrapper .wmde-markdown pre .token.entity,
+.markdown-wrapper .wmde-markdown pre .token.url,
+.markdown-wrapper .wmde-markdown pre .language-css .token.string,
+.markdown-wrapper .wmde-markdown pre .token.variable {
+  color: #d4d4d4 !important;
+}
+
+.markdown-wrapper .wmde-markdown pre .token.atrule,
+.markdown-wrapper .wmde-markdown pre .token.attr-value,
+.markdown-wrapper .wmde-markdown pre .token.keyword {
+  color: #569cd6 !important; /* Blue for keywords */
+}
+
+.markdown-wrapper .wmde-markdown pre .token.function {
+  color: #dcdcaa !important; /* Yellow for functions */
+}
+
+.markdown-wrapper .wmde-markdown pre .token.regex,
+.markdown-wrapper .wmde-markdown pre .token.important {
+  color: #d16969 !important;
+}
+
+/* Custom scrollbar styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
