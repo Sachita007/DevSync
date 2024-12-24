@@ -6,6 +6,7 @@ import Link from 'next/link'
 import React from 'react'
 import CommitLog from './commit-log'
 import AskQuestionCard from './ask-question-card'
+import MeetingCard from './meeting-card'
 
 const Dashboard = () => {
     const { user } = useUser()
@@ -47,7 +48,7 @@ const Dashboard = () => {
             <div className='mt-4'>
                 <div className='grid grid-cols-1 gap-4 sm:grid-cols-5'>
                     <AskQuestionCard />
-                    <div>MeetingCard</div>
+                    <MeetingCard />
 
                 </div>
             </div>

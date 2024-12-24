@@ -36,6 +36,7 @@ model Project {
     Commit              Commit[]
     SourceCodeEmbedding SourceCodeEmbedding[]
     SavedQuestion       Question[]
+    Meetings            Meeting[]
 }
 
 model UserToProject {
@@ -61,6 +62,37 @@ model SourceCodeEmbedding {
     createdAt        DateTime                    @default(now())
 
     project Project @relation(fields: [projectId], references: [id])
+}
+
+model Meeting {
+    id         String        @id @default(cuid())
+    name       String
+    createdAt  DateTime      @default(now())
+    updatedAt  DateTime      @updatedAt
+    meetingUrl String // Firabase storage  URL
+    projectId  String
+    Project    Project       @relation(fields: [projectId], references: [id])
+    status     MeetingStatus @default(PROCESSING)
+    Issue      Issue[]
+}
+
+model Issue {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    start     String
+    end       String
+    gist      String
+    headline  String
+    summary   String
+    meetingId String
+    Meeting   Meeting @relation(fields: [meetingId], references: [id])
+}
+
+enum MeetingStatus {
+    PROCESSING
+    COMPLETED
 }
 
 model Question {

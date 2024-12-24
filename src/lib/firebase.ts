@@ -8,12 +8,12 @@ import { get } from "http";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyALgnnsgEVfiw7Ab4i0uePTxZM2D8XOCqY",
-    authDomain: "devsync-ai.firebaseapp.com",
-    projectId: "devsync-ai",
-    storageBucket: "devsync-ai.firebasestorage.app",
-    messagingSenderId: "292610903194",
-    appId: "1:292610903194:web:a434f0d36223e2a9dd2323"
+    apiKey: "AIzaSyAN4HjlizDp6MMxhqjDCRq_954bCr0zupk",
+    authDomain: "devsync-9e79d.firebaseapp.com",
+    projectId: "devsync-9e79d",
+    storageBucket: "devsync-9e79d.firebasestorage.app",
+    messagingSenderId: "1065391302548",
+    appId: "1:1065391302548:web:694f533c11fba1a9f01181"
 };
 
 // Initialize Firebase
