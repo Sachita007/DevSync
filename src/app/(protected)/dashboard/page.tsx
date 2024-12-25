@@ -7,6 +7,9 @@ import React from 'react'
 import CommitLog from './commit-log'
 import AskQuestionCard from './ask-question-card'
 import MeetingCard from './meeting-card'
+import ArchiveButton from './archive-button'
+import InviteButton from './invite-button'
+import TeamMembers from './team-member'
 
 const Dashboard = () => {
     const { user } = useUser()
@@ -33,17 +36,20 @@ const Dashboard = () => {
 
 
                 </div>
-                <div className='h-4'></div>
 
+
+                <div className='h-4'></div>
                 <div className='flex items-center gap-4'>
+                    <TeamMembers />
+                    <InviteButton />
+                    <ArchiveButton />
 
                 </div>
 
 
 
-
-
             </div>
+
 
             <div className='mt-4'>
                 <div className='grid grid-cols-1 gap-4 sm:grid-cols-5'>
@@ -53,10 +59,8 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            <div className='mt-8'>
-                <CommitLog />
-
-            </div>
+            <div className='mt-8'></div>
+            <CommitLog />
         </div>
     )
 }

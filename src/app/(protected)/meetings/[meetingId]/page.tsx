@@ -1,4 +1,5 @@
 import React from 'react'
+import IssuesList from './issues-list'
 
 type Props = {
     params: Promise<{ meetingId: string }>
@@ -7,7 +8,7 @@ type Props = {
 const MeetingDetailsPage = async ({ params }: Props) => {
     const { meetingId } = await params
     return (
-        <div>{meetingId}</div>
+        <IssuesList meetingId={meetingId} />
     )
 }
 
