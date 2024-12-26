@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar"
 import UseProject from "@/hooks/use-project"
 import { cn } from "@/lib/utils"
-import { Bot, CreditCard, LayoutDashboardIcon, Plus, Presentation } from "lucide-react"
+import { Bot, CreditCard, Layout, LayoutDashboardIcon, Plus, Presentation } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -46,10 +46,11 @@ export function AppSidebar() {
         <Sidebar collapsible="icon" variant="floating">
             <SidebarHeader>
                 <div className="flex items-center gap-2">
-                    <Image src='/devsync-logo.png' alt='logo' width={40} height={40} />
+                    {/* <Image src='/devsync-logo.png' alt='logo' width={40} height={40} /> */}
+                    <Layout className="text-blue-400" width={30} height={30} />
                     {open &&
                         <h1 className="text-xl font-bold text-primary">
-                            DevSync-AI
+                            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">DevSync</span>
                         </h1>
                     }
 
@@ -72,7 +73,8 @@ export function AppSidebar() {
                                                 }
                                                 )}>
                                                     <item.icon />
-                                                    <span>{item.title}</span>
+
+                                                    <span >{item.title}</span>
                                                 </Link>
                                             </SidebarMenuButton>
                                         </SidebarMenuItem>
@@ -106,7 +108,7 @@ export function AppSidebar() {
 
 
                                                     </div>
-                                                    <span>{project.name}</span>
+                                                    <span hidden={!open} >{project.name}</span>
                                                 </div>
                                             </SidebarMenuButton>
                                         </SidebarMenuItem>

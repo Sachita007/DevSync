@@ -2,6 +2,7 @@ import { GithubRepoLoader } from "@langchain/community/document_loaders/web/gith
 import type { Document } from "@langchain/core/documents";
 import { generateAiEmbedding, summariseCode } from "./gemini";
 import { db } from "@/server/db";
+import { Octokit } from "octokit";
 
 export const loadGithubRepo = async (
     githubUrl: string,
@@ -24,6 +25,56 @@ export const loadGithubRepo = async (
     const docs = await loader.load();
     return docs;
 };
+
+const getFileCount = async (path: string, octokit: Octokit, githubOwner: string, githubRepo: string, acc: number = 0) => {
+    const { data } = await octokit.rest.repos.getContent({
+        owner: githubOwner,
+        repo: githubRepo,
+        path
+    })
+    if (!Array.isArray(data) && data.type === "file") {
+        return acc + 1
+    }
+    if (Array.isArray(data)) {
+        let fileCount = 0;
+        const directories: string[] = []
+        for (const item of data) {
+            if (item.type === "dir") {
+                directories.push(item.path)
+            }
+            else {
+                fileCount += 1
+            }
+        }
+        if (directories.length > 0) {
+            const directoryCounts = await Promise.all(
+                directories.map(dirPath => getFileCount(dirPath, octokit, githubOwner, githubRepo, 0))
+            )
+            fileCount += directoryCounts.reduce((acc, count) => acc + count, 0)
+
+        }
+        return acc + fileCount
+
+    }
+    return acc
+
+}
+
+export const checkCredits = async (gtihubUrl: string, githubToken?: string) => {
+    // find out how many files are in the repo
+    const octokit = new Octokit({
+        auth: githubToken || process.env.GITHUB_TOKEN || "",
+    });
+    const githubOwner = gtihubUrl.split("/")[3];
+    const githubRepo = gtihubUrl.split("/")[4];
+    if (!githubOwner || !githubRepo) {
+        return 0;
+    }
+    const fileCount = await getFileCount("", octokit, githubOwner, githubRepo)
+    return fileCount
+
+
+}
 
 export const indexGithubRepo = async (
     projectId: string,
