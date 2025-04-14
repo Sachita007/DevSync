@@ -1,29 +1,78 @@
-# Create T3 App
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+# 🚀 DevSync
 
-## What's next? How do I make an app with this?
+AI-driven platform to sync GitHub repositories, analyze commit history, and provide real-time contextual insights using **Gemini AI** and **AssemblyAI**.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## 🛠 Tech Stack
 
-## Learn More
+- **Frontend**: Next.js, Tailwind CSS, ShadCN UI  
+- **Backend**: Node.js, PostgreSQL, Prisma  
+- **AI Integrations**:
+  - **Gemini AI** – Semantic code search, context-aware Q&A
+  - **AssemblyAI** – Meeting transcription and action item extraction  
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+---
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## 🌟 Features
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+- 🔄 **GitHub Sync** – Connect and sync repositories in real-time  
+- 📈 **Commit Analysis** – Track commit patterns, contributions, and insights  
+- 🤖 **AI Code Search** – Use Gemini AI to ask natural language questions about your codebase  
+- 📝 **Meeting Transcriptions** – Upload audio files, transcribe meetings, and auto-extract key points with AssemblyAI  
+- 🧠 **Actionable Insights** – Identify blockers, progress, and key contributors intelligently
 
-## How do I deploy this?
+---
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+## 📷 Demo
+
+> Add a video/gif link here to show how it works (e.g., Loom or YouTube)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/Sachita007/DevSync.git
+cd devsync
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Set Up Environment Variables
+
+Create a `.env` file and add:
+
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/devsync-ai"
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="your-clerk-publishable-key"
+CLERK_SECRET_KEY="your-clerk-secret-key"
+NEXT_PUBLIC_CLERK_SIGN_IN_URL="/sign-in"
+NEXT_PUBLIC_CLERK_SIGN_UP_URL="/sign-up"
+NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL="/sync-user"
+GITHUB_TOKEN="your-github-token"
+GEMINI_API_KEY="your-gemini-api-key"
+ASSEMBLYAI_API_KEY="your-assemblyai-api-key"
+STRIPE_SECRET_KEY="your-stripe-secret-key"
+STRIPE_PUBLISHABLE_KEY="your-stripe-publishable-key"
+STRIPE_WEBHOOK_SECRET="your-stripe-webhook-secret"
+
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+
+```
+
+### 4. Run the App
+
+```bash
+npm run dev
+```
+
+---
+
