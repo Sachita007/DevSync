@@ -8,7 +8,6 @@ AI-driven platform to sync GitHub repositories, analyze commit history, and prov
 ## 🛠 Tech Stack
 
 - **Frontend**: Next.js, Tailwind CSS, ShadCN UI  
-- **Backend**: Node.js, PostgreSQL, Prisma  
 - **AI Integrations**:
   - **Gemini AI** – Semantic code search, context-aware Q&A
   - **AssemblyAI** – Meeting transcription and action item extraction  
